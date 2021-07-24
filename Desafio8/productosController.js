@@ -58,12 +58,6 @@ Router.post("/guardar", async (req, res) => {
     }
 });
 
-Router.put("/actualizar/:id",(req,res)=>{
-    res.send("Actualizar")
-});
 
-Router.delete("/borrar/:id",(req,res)=>{
-    res.send("Eliminar")
-})
 
 module.exports = Router;
