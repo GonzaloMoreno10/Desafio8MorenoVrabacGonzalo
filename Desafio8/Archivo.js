@@ -70,12 +70,11 @@ class Archivo {
 
     //Metodo utilizado para borrar el archivo
     async borrar() {
-        try {
-            await fs.unlink(this.name)
-            console.log('Archivo eliminado')
-        } catch (err) {
-            console.error('ocurrio un error ', err)
-        }
+
+    };
+
+    async actualizar() {
+
     };
 }
 
