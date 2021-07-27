@@ -68,7 +68,14 @@ class Archivo {
 
     };
 
+    //Metodo utilizado para borrar el archivo
+    async borrar() {
 
+    };
+
+    async actualizar() {
+
+    };
 }
 
 module.exports = Archivo;

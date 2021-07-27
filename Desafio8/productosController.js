@@ -13,7 +13,12 @@ Router.get("/listar", async (req, res) => {
     try {
         let productos = await archivo.getProductos();
         if (productos) {
-            res.json(productos);
+            if (productos.length > 0) {
+                res.json(productos);
+            }
+            else {
+                res.send({ error: "No hay produtos cargados" })
+            }
         }
         else {
             res.send("Ocurrio un error")
@@ -33,7 +38,7 @@ Router.get("/listar/:id", async (req, res) => {
             res.json(prod);
         }
         else {
-            res.send("No se encontro el id")
+            res.send({ error: "No existe el producto" })
         }
     } catch (error) {
         console.log("Error");
@@ -57,7 +62,6 @@ Router.post("/guardar", async (req, res) => {
         res.send("Error: " + error);
     }
 });
-
 
 
 module.exports = Router;
