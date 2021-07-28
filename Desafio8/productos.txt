@@ -9,3 +9,4 @@
 {"title":"Dulce de leche","price":50,"thumbnail":"www.dulcedeleche","id":8}
 {"title":"Dulce de leche","price":50,"thumbnail":"www.dulcedeleche","id":9}
 {"title":"Dulce de leche","price":50,"thumbnail":"www.dulcedeleche","id":10}
+{"title":"Hoy","price":100,"thumbnail":"asdasd","id":11}

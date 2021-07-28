@@ -6,7 +6,6 @@ const Archivo = require("./Archivo");
 //Inicializaciones
 let archivo = new Archivo("./productos.txt")
 
-
 //Rutas
 
 Router.get("/listar", async (req, res) => {
@@ -14,17 +13,14 @@ Router.get("/listar", async (req, res) => {
         let productos = await archivo.getProductos();
         if (productos) {
             if (productos.length > 0) {
-                res.json(productos);
+                res.status(200).json({productos:productos});
             }
             else {
                 res.send({ error: "No hay produtos cargados" })
             }
         }
-        else {
-            res.send("Ocurrio un error")
-        }
     } catch (error) {
-        console.log("Error: " + error)
+        console.log(error);
     }
 
 
@@ -35,10 +31,10 @@ Router.get("/listar/:id", async (req, res) => {
         let id = req.params.id;
         let prod = await archivo.getProductosById(id)
         if (prod) {
-            res.json(prod);
+            res.status(200).json({producto:prod});
         }
         else {
-            res.send({ error: "No existe el producto" })
+            res.status(400).json({ error: "No existe el producto" })
         }
     } catch (error) {
         console.log("Error");
@@ -53,13 +49,13 @@ Router.post("/guardar", async (req, res) => {
         prod = new Producto(title, price, thumbnail);
         let resultado = await archivo.guardar(prod)
         if (resultado) {
-            res.send(prod);
+            res.status(200).json({data:prod});
         }
         else {
-            res.send("No se pudo guardar el producto")
+            res.status(400).json({error:"No se pudo guardar el producto"})
         }
     } catch (error) {
-        res.send("Error: " + error);
+        console.log(error);
     }
 });
 

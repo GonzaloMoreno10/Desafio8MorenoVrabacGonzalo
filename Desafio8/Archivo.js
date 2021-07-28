@@ -50,13 +50,16 @@ class Archivo {
     async guardar(producto) {
         let id = await this.generarId();
         producto.id = id;
-        try {
-            await fs.appendFile(this.name, "\n" + JSON.stringify(producto));
-            return 1
+        if(producto.title){
+            try {
+                await fs.appendFile(this.name, "\n" + JSON.stringify(producto));
+                return 1
+            }
+            catch (err) {
+                console.log("Ocurrio un error " + err)
+            }
         }
-        catch (err) {
-            console.log("Ocurrio un error " + err)
-        }
+        
     };
 
     //Metodo utilizado para generar el id
